@@ -1,0 +1,21 @@
+@import "@/styles/base/breakpoints";
+
+.recommendedTracks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 50px;
+
+  @media (min-width: $bp-large-min) {
+    grid-column: 7 / span 3;
+    margin-top: 0;
+    margin-left: 50px;
+  }
+}
+
+.recommendedTracksList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}

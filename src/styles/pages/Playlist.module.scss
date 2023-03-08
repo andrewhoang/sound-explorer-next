@@ -1,0 +1,14 @@
+.button {
+  composes: button from "@/components/Button/Button.module.scss";
+}
+
+.footer {
+  margin: var(--content-spacing);
+  text-align: center;
+}
+
+.playlistList {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+}

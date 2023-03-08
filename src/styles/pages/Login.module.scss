@@ -1,0 +1,63 @@
+@import "@/styles/base/breakpoints";
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 var(--g-grid-gutter);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/img/wallpaper2.jpeg");
+  background-position: bottom;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  color: var(--c-white);
+
+  :global(.btn) {
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.eyebrow {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+
+  @media (min-width: $bp-medium-min) {
+    font-size: 20px;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  @media (min-width: $bp-medium-min) {
+    white-space: nowrap;
+  }
+
+  svg {
+    display: none;
+
+    @media (min-width: $bp-medium-min) {
+      display: inline-block;
+      height: 48px;
+      width: 48px;
+    }
+  }
+}

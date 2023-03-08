@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,800|Hind:400,700|Open+Sans:400:700|Palanquin:400,700|Source+Sans+Pro|Golos+Text:400,500,700,800|Nunito:400,700|Work+Sans:400,700|Source+Serif+Pro:400,600,700");
+
+@import "./base/typography.scss";
+@import "./base/colors.scss";
+@import "./base/variables.scss";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 18px;
+  font-family: $font-body;
+  scroll-behavior: smooth;
+
+  &.modal-open {
+    overflow: hidden;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  height: 16px;
+  width: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  font-family: $font-display;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: 0.1rem;
+
+  @media (min-width: $bp-medium-min) {
+    font-size: 64px;
+    line-height: 60px;
+  }
+}
+
+h2 {
+  font-family: $font-heading;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.theme--dark {
+  --l-contrast-main: var(--c-white);
+  --l-contrast-color: var(--c-grey-1);
+  --l-contrast-color-hover: var(--c-grey-2);
+  --l-bg-color: var(--c-black);
+  color: var(--c-white);
+  background-color: var(--l-bg-color);
+  transition: all 100ms ease-in-out;
+}
+
+.theme--light {
+  --l-contrast-main: var(--c-black);
+  --l-contrast-color: var(--c-grey-3);
+  --l-contrast-color-hover: var(--c-grey-4);
+  --l-bg-color: var(--c-white);
+}

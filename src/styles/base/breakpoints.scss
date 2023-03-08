@@ -1,0 +1,23 @@
+// General Breakpoints
+
+// to be used with min-width (preferred over max-width to be "mobile first")
+// @media (min-width: $bp-small-min) { ... }
+
+$content-max-width: 1086px; // sass since it's used in media queries & calc()
+
+$bp-x-small-min: 470px;
+$bp-small-min: 680px;
+$bp-medium-min: 780px;
+$bp-large-min: 910px;
+$bp-x-large-min: $content-max-width;
+
+// to be used with max-width (avoid max-with in favor of min-width)
+// @media (max-width: $bp-small-max) { ... }
+$bp-x-small-max: ($bp-x-small-min - 1);
+$bp-small-max: ($bp-small-min - 1);
+$bp-medium-max: ($bp-medium-min - 1);
+$bp-large-max: ($bp-large-min - 1);
+$bp-x-large-max: ($bp-x-large-min - 1);
+$bp-global-header: $bp-x-large-min;
+$bp-global-header-x-large: 1260px;
+$bp-carousel-max-arrows: 1200px;

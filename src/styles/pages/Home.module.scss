@@ -1,0 +1,14 @@
+@import "@/styles/base/breakpoints";
+
+.content {
+  padding: 50px var(--g-grid-gutter);
+
+  @media (min-width: $bp-large-min) {
+    display: grid;
+    grid-template-columns: var(--g-grid-gutter) repeat(8, 1fr) var(
+        --g-grid-gutter
+      );
+    min-height: 100vh;
+    padding-inline: 0;
+  }
+}

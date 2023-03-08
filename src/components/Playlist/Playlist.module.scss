@@ -1,0 +1,12 @@
+@import "@/styles/base/breakpoints";
+
+.playlist {
+  padding-inline: var(--g-grid-gutter);
+}
+
+.mobilePlaylist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block: 30px;
+}

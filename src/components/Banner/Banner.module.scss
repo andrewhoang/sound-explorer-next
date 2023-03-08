@@ -1,0 +1,73 @@
+@import "@/styles/base/typography";
+@import "@/styles/base/breakpoints";
+
+.banner {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--g-grid-gutter) repeat(8, 1fr) var(
+      --g-grid-gutter
+    );
+  align-items: end;
+  justify-content: center;
+  height: 500px;
+  padding-block: var(--content-spacing);
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3));
+    content: "";
+
+    @media (min-width: $bp-medium-min) {
+      backdrop-filter: blur(8px);
+    }
+  }
+}
+
+.imageBg {
+  object-fit: cover;
+}
+
+.image {
+  z-index: 10;
+  display: none;
+  grid-column: 2 / span 3;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.content {
+  z-index: 10;
+  grid-column: 2 / span 8;
+  color: var(--c-white);
+}
+
+.title {
+  font-size: 48px;
+  line-height: 40px;
+  text-transform: uppercase;
+
+  @media (min-width: $bp-medium-min) {
+    font-size: 96px;
+    line-height: 80px;
+  }
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-size: 18px;
+  font-family: $font-display;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}

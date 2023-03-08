@@ -1,0 +1,110 @@
+// add this class to the body when the modal is open
+// it will prevent the body from scrolling when the end of the scroll for the modal is reached
+
+.modal {
+  $duration: 500ms;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+
+  overflow: auto;
+  visibility: visible;
+
+  // visibility 0 to make things focusable during the transition
+  transition: opacity $duration, visibility 0ms, transform $duration;
+
+  // when it's hidden
+  &:not(.isOpen) {
+    visibility: hidden;
+    opacity: 0;
+
+    // reset visibility so it transitions out
+    transition: opacity $duration, visibility $duration, transform $duration;
+    pointer-events: none; // so the user can't click it as it's fading away
+
+    .modalBox {
+      transform: translateY(18px);
+    }
+
+    * {
+      visibility: hidden !important; // any nested visibility: visible properties allow tabbing into the hidden modal.
+    }
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(18, 24, 31, 0.75);
+  transition: inherit;
+}
+
+.modalBoxHolder {
+  position: relative; // so the overlay knows how big it should be
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+  transition: inherit;
+}
+
+.modalBox {
+  position: relative;
+
+  max-width: 800px;
+  max-height: 800px;
+  overflow: scroll;
+
+  background-color: var(--l-bg-color);
+
+  transform: translateY(0);
+  transition: inherit;
+}
+
+.modalTitle {
+  position: relative;
+  padding: 30px;
+
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modalContent {
+  padding: 0 20px 20px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  color: inherit;
+  font-size: 18px;
+
+  line-height: 0;
+  border: none;
+  background: none;
+
+  transition: all 500ms;
+  transform: translateY(-50%);
+
+  cursor: pointer;
+}

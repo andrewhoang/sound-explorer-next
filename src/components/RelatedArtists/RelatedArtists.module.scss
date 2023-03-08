@@ -1,0 +1,16 @@
+@import "@/styles/base/breakpoints.scss";
+
+.relatedArtistsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: var(--content-spacing);
+
+  @media (min-width: $bp-x-small-min) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: $bp-medium-min) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

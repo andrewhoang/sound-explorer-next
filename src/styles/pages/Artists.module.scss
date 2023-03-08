@@ -1,0 +1,37 @@
+@import "@/components/Button/Button.module.scss";
+
+.artists {
+}
+
+.content {
+  padding: var(--content-spacing) var(--g-grid-gutter);
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+}
+
+.selectedArtistsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.selectedArtist {
+  background: none;
+  border: none;
+}
+
+.selectedArtistImage {
+  height: 80px;
+  width: 80px;
+}
+
+.footer {
+  text-align: center;
+}

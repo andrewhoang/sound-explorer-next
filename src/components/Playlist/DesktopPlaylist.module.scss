@@ -1,0 +1,66 @@
+@import "@/styles/base/breakpoints";
+
+.table {
+  width: 100%;
+  margin-block: var(--content-spacing);
+
+  .tableHeader,
+  .tableRow {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 80px repeat(3, 1fr) 100px var(--g-grid-gutter);
+    gap: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    background-color: var(--l-contrast-color);
+
+    :last-child {
+      grid-column: 6 / span 2;
+    }
+  }
+
+  .tableHeader {
+    display: none;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: transparent;
+
+    @media (min-width: $bp-medium-min) {
+      display: grid;
+    }
+  }
+
+  .tableRow {
+    padding: 16px;
+
+    &:hover {
+      background-color: var(--l-contrast-color-hover);
+    }
+  }
+
+  .cell {
+    &.hiddenMobile {
+      display: none;
+
+      @media (min-width: $bp-medium-min) {
+        display: block;
+      }
+    }
+  }
+}
+
+.trackAlbumImage {
+  display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+
+  .cellBtn {
+    color: inherit;
+    border: none;
+    background: none;
+  }
+}

@@ -1,0 +1,47 @@
+@import "@/styles/base/typography";
+
+.user {
+  position: absolute;
+  z-index: 10;
+  right: var(--g-grid-gutter);
+  top: 30px;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+  padding-left: 5px;
+  color: inherit;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--l-bg-color);
+  transition: background-color 300ms ease-in;
+
+  img {
+    margin-right: 5px;
+    border-radius: 50px;
+  }
+}
+
+.username {
+  padding: 10px 5px 8px;
+}
+
+.userDropdown {
+  margin-top: 5px;
+  padding: 10px 5px;
+  text-align: center;
+  background-color: var(--l-bg-color);
+}
+
+.logout {
+  color: inherit;
+  font-size: 16px;
+  border: none;
+  background: none;
+}

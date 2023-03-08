@@ -1,0 +1,55 @@
+.track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: 16px;
+  padding-inline-end: 16px;
+  border-radius: 4px;
+  background-color: var(--l-contrast-color);
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--l-contrast-color-hover);
+  }
+}
+
+.trackAlbumImage {
+  height: 60px;
+  width: 60px;
+  border-radius: 4px;
+}
+
+.trackInfo {
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.trackArtist {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.actions {
+  margin-left: auto;
+
+  .action {
+    color: inherit;
+    font-size: 16px;
+    border: none;
+    background: none;
+  }
+
+  svg {
+    display: block;
+  }
+}
