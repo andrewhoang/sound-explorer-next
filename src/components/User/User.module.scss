@@ -22,6 +22,11 @@
   background-color: var(--l-bg-color);
   transition: background-color 300ms ease-in;
 
+  &:hover,
+  &:focus {
+    background-color: var(--l-contrast-color-hover);
+  }
+
   img {
     margin-right: 5px;
     border-radius: 50px;
@@ -36,12 +41,19 @@
   margin-top: 5px;
   padding: 10px 5px;
   text-align: center;
+
   background-color: var(--l-bg-color);
+
+  &:hover,
+  &:focus {
+    background-color: var(--l-contrast-color-hover);
+  }
 }
 
 .logout {
   color: inherit;
-  font-size: 16px;
+  font-size: 12px;
+  text-transform: uppercase;
   border: none;
   background: none;
 }

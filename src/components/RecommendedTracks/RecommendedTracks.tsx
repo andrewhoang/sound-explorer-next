@@ -9,54 +9,40 @@ import TrackCard from "../TrackCard/TrackCard";
 
 import * as R from "ramda";
 import shuffle from "lodash.shuffle";
+import useRecentlyPlayed from "@/hooks/useRecentlyPlayed";
 
 const RecommendedTracks = (): JSX.Element => {
   const spotifyApi = useSpotify();
   const { data: session } = useSession();
 
+  const { recentlyPlayedTracks, recentlyPlayedArtists } = useRecentlyPlayed();
+
   const [recommendedTracks, setRecommendedTracks] = useState<
     SpotifyApi.RecommendationTrackObject[]
   >([]);
 
-  const [recentlyPlayedArtists, setRecentlyPlayedArtists] = useState<
-    SpotifyApi.ArtistObjectFull[]
-  >([]);
-
   const getRecommendedTracks = useCallback(async () => {
-    const recentlyPlayed = await spotifyApi
-      .getMyRecentlyPlayedTracks({ limit: 20 })
-      .then((data) => shuffle(data?.body?.items));
-
-    // Get random last 3 artists user listened to based on recently played
-    // @ts-ignore
-    const recentlyPlayedArtists = R.compose(
-      R.slice(0, 3),
-      // @ts-ignore
-      (arr) => shuffle(arr),
-      R.uniqBy(R.prop("id")),
-      // @ts-ignore
-      R.map(R.compose(R.view(R.lensIndex(0)), R.path(["track", "artists"])))
-    )(recentlyPlayed) as SpotifyApi.ArtistObjectFull[];
-
-    setRecentlyPlayedArtists(recentlyPlayedArtists);
-
-    const trackIds = recentlyPlayed.map((item) => item.track.id).slice(0, 2);
+    const trackIds = recentlyPlayedTracks
+      .map((item) => item.track.id)
+      .slice(0, 2);
     const artistIds = recentlyPlayedArtists.map(
       (artist: SpotifyApi.ArtistObjectFull) => artist.id
     );
 
-    const recommendedTracks = await spotifyApi
-      .getRecommendations({
-        seed_artists: artistIds,
-        seed_tracks: trackIds,
-        limit: 10,
-      })
-      .then((data) => data.body.tracks);
+    if (!R.isEmpty(trackIds) && !R.isEmpty(artistIds)) {
+      const recommendedTracks = await spotifyApi
+        .getRecommendations({
+          seed_artists: artistIds,
+          seed_tracks: trackIds,
+          limit: 10,
+        })
+        .then((data) => data.body.tracks);
 
-    setRecommendedTracks(
-      recommendedTracks as SpotifyApi.RecommendationTrackObject[]
-    );
-  }, [spotifyApi]);
+      setRecommendedTracks(
+        recommendedTracks as SpotifyApi.RecommendationTrackObject[]
+      );
+    }
+  }, [spotifyApi, recentlyPlayedArtists, recentlyPlayedTracks]);
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {

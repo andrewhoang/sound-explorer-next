@@ -13,9 +13,20 @@
 .latestReleasesList {
   display: grid;
   gap: 16px;
+  min-height: 250px;
   margin-top: 8px;
+
+  &.emptyList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   @media (min-width: $bp-medium-min) {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.hasReleases {
+  margin-bottom: 16px;
 }

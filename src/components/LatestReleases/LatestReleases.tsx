@@ -8,6 +8,8 @@ import TrackCard from "../TrackCard/TrackCard";
 
 import { subMonths, isAfter } from "date-fns";
 import * as R from "ramda";
+import cn from "classnames";
+import RecommendedArtists from "../RecommendedArtists/RecommendedArtists";
 
 const LatestReleases = (): JSX.Element => {
   const spotifyApi = useSpotify();
@@ -60,21 +62,39 @@ const LatestReleases = (): JSX.Element => {
     }
   }, [session, spotifyApi, getLatestReleases]);
 
+  const noReleases = R.isEmpty(latestReleases);
+
   return (
     <div className={styles.latestReleases}>
+      {!noReleases && (
+        <RecommendedArtists className={styles.hasReleases} itemsToShow={4} />
+      )}
       <h2 className={styles.title}>Latest Releases</h2>
       <p>Based on artists you follow</p>
-      <div className={styles.latestReleasesList}>
-        {latestReleases.slice(0, 20)?.map((release) => (
-          <TrackCard
-            id={release.id}
-            key={release.id}
-            image={release.album.images[1]}
-            name={release.name}
-            artists={release.artists.map((artist) => artist?.name).join(", ")}
-          />
-        ))}
+      <div
+        className={cn(styles.latestReleasesList, {
+          [styles.emptyList]: noReleases,
+        })}
+      >
+        {!noReleases ? (
+          latestReleases
+            ?.slice(0, 20)
+            ?.map((release) => (
+              <TrackCard
+                id={release.id}
+                key={release.id}
+                image={release.album.images[1]}
+                name={release.name}
+                artists={release.artists
+                  .map((artist) => artist?.name)
+                  .join(", ")}
+              />
+            ))
+        ) : (
+          <h3>No new releases</h3>
+        )}
       </div>
+      {noReleases && <RecommendedArtists />}
     </div>
   );
 };

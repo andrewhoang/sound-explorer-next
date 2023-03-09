@@ -6,7 +6,6 @@ const useSpotify = () => {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
-      console.log("here");
       signIn();
     },
   });
