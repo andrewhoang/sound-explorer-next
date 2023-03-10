@@ -12,7 +12,8 @@ import Button from "@/components/Button/Button";
 import styles from "@/styles/pages/Artists.module.scss";
 
 import * as R from "ramda";
-import cn from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
   const router = useRouter();
@@ -101,7 +102,7 @@ const Search = () => {
             className={styles.btn}
             onClick={handleCreatePlaylist}
           >
-            {isLoading ? "Creating New Playlist..." : "Create Playlist"}
+            {isLoading ? "Generating New Playlist..." : "Generate Playlist"}
           </Button>,
         ]}
       />
@@ -125,6 +126,7 @@ const Search = () => {
                 width={artist.images[2].width}
                 title={artist.name}
               />
+              <FontAwesomeIcon icon={faTrash} />
             </button>
           ))}
         </div>
@@ -138,7 +140,7 @@ const Search = () => {
             className={styles.btn}
             onClick={handleCreatePlaylist}
           >
-            {isLoading ? "Creating New Playlist..." : "Create Playlist"}
+            {isLoading ? "Generating New Playlist..." : "Generate Playlist"}
           </Button>
         </div>
       </div>

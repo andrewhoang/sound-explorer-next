@@ -48,6 +48,28 @@
   color: var(--c-white);
 }
 
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.editTitle {
+  padding: 0;
+  color: var(--c-white);
+  border: 0;
+  background: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 .title {
   font-size: 48px;
   line-height: 40px;

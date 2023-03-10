@@ -116,7 +116,10 @@ const PlaylistPage = () => {
     }
   }, [type, spotifyApi, selected]);
 
+  const [isCreatingPlaylist, setIsCreatingPlaylist] = useState<boolean>(false);
+
   const handleCreatePlaylist = () => {
+    setIsCreatingPlaylist(true);
     spotifyApi.createPlaylist(playlistName, { public: true }).then(
       (data) =>
         spotifyApi
@@ -125,7 +128,10 @@ const PlaylistPage = () => {
             playlist.map((track) => track.uri)
           )
           .then(
-            (data) => console.log("Successfully created new playlist!"),
+            (data) => {
+              console.log("Successfully created new playlist!");
+              setIsCreatingPlaylist(false);
+            },
             (err) => console.log("Something went wrong!", err)
           ),
       (err) => console.log("Something went wrong!", err)
@@ -205,7 +211,7 @@ const PlaylistPage = () => {
             className={styles.btn}
             onClick={handleCreatePlaylist}
           >
-            Create Playlist
+            {isCreatingPlaylist ? "Creating Playlist..." : "Create Playlist"}
           </Button>,
           <Button
             key={1}

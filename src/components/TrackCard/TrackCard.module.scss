@@ -3,7 +3,6 @@
   align-items: center;
   gap: 16px;
   overflow: hidden;
-  padding: 16px;
   padding-inline-end: 16px;
   border-radius: 4px;
   background-color: var(--l-contrast-color);
@@ -16,14 +15,15 @@
 }
 
 .trackAlbumImage {
-  height: 60px;
-  width: 60px;
-  border-radius: 4px;
+  flex: 0 0 80px;
+  height: 80px;
+  width: 80px;
 }
 
 .trackInfo {
   max-width: 90%;
   overflow: hidden;
+  padding-block: 16px;
   text-overflow: ellipsis;
 }
 

@@ -26,6 +26,22 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
     setSearch(value);
   }, 1000);
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSearch("");
+      }
+    };
+
+    if (search) {
+      window.addEventListener("keydown", handleEscape);
+
+      () => {
+        return window.removeEventListener("keydown", handleEscape);
+      };
+    }
+  }, [search]);
+
   const handleSearchSelect = (id: string, type: string) => {
     if (type === "artist") {
       router.push({

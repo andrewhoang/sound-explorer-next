@@ -23,13 +23,32 @@
 }
 
 .selectedArtist {
+  position: relative;
   background: none;
   border: none;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    color: var(--c-white);
+    transform: translate(-50%, -50%);
+  }
+
+  &:focus,
+  &:hover {
+    svg {
+      display: block;
+    }
+  }
 }
 
 .selectedArtistImage {
+  display: block;
   height: 80px;
   width: 80px;
+  object-fit: cover;
 }
 
 .footer {

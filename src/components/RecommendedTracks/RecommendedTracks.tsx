@@ -34,7 +34,7 @@ const RecommendedTracks = (): JSX.Element => {
         .getRecommendations({
           seed_artists: artistIds,
           seed_tracks: trackIds,
-          limit: 10,
+          limit: 13,
         })
         .then((data) => data.body.tracks);
 

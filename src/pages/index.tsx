@@ -7,7 +7,6 @@ import Banner from "@/components/Hero/Hero";
 import LatestReleases from "@/components/LatestReleases/LatestReleases";
 import RecommendedTracks from "@/components/RecommendedTracks/RecommendedTracks";
 import User from "@/components/User/User";
-import RecommendedArtists from "@/components/RecommendedArtists/RecommendedArtists";
 
 const Home = (): JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
